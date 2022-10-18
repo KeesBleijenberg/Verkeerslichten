@@ -1,7 +1,3 @@
-#include <freertos/FreeRTOS.h>
-#include <freertos/task.h>
-#include <freertos/queue.h>
-#include <cmath>
 #include <hardwareVerkeerslichten.h>
 #include <hulpfunc.h>
 #include <setup.h>
@@ -30,7 +26,7 @@ void handleOversteekLichten(){
   zetGroeneOversteeklichten(AAN);
   sleepInSecs(OVERSTEEKLICHT_VOLLEDIG_GROEN_TIJD_SEC);
   //knipperen van het groene oversteeklicht
-  for (int i = 0; i <  OVERSTEEKLICHT_GROEN_KNIPPER_AANTAL; i++) {
+  for (auto i = 0; i <  OVERSTEEKLICHT_GROEN_KNIPPER_AANTAL; i++) {
     zetGroeneOversteeklichten(UIT);
     sleepInSecs(OVERSTEEKLICHT_GROEN_KNIPPER_AAN_TIJD_SEC);
     zetGroeneOversteeklichten(AAN);
@@ -57,10 +53,9 @@ void handleGedrukt() {
 }
 
 extern "C" { //extern "C" => voorkom name mangling door C++
-  // the main loop
-  void app_main() {    
-    setup(); //initaliseren poorten en lichten initialiseren (rood oversteeklicht en groen verkeerslicht)
-    while (true) {      
+  void app_main() {   
+    setup();          // initaliseren poorten en lichten (oversteeklicht op rood en verkeerslicht op groen)
+    while (true) {    // the main loop   
       if (leesIsGedrukt()) {
         handleGedrukt();
       }
