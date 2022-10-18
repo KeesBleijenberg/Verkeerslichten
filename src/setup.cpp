@@ -1,4 +1,3 @@
-#include <driver/gpio.h>
 #include <hardwareVerkeerslichten.h>
 #include <setup.h>
 #include <hulpfunc.h>

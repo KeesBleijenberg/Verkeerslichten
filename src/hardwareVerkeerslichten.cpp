@@ -1,10 +1,4 @@
 #include <driver/gpio.h>
-#include <freertos/FreeRTOS.h>
-#include <freertos/task.h>
-#include <freertos/queue.h>
-#include <stdio.h>
-#include <cmath>
-
 #include "hardwareVerkeerslichten.h"
 
 void zetPinOutput(gpio_num_t pin) {
