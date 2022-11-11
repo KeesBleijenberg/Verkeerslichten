@@ -1,3 +1,5 @@
+#include <test.h>  
+#include <iostream>
 #include <driver/gpio.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
@@ -10,23 +12,10 @@ void sleepInSecs (const double secs) {
     vTaskDelay(round ((secs * 1000)/ portTICK_PERIOD_MS));
 }
 
-
-int invertLevel(int level) {
-  return level; //nu nog even niet inverten. Inverten is nodig voor normally open relays.
-  /*
-    if (level == AAN) {
-      return UIT;
-    }
-    else {
-      return AAN;
-    }    
-  */
-}  
-
 void zetRodeLichten(int aanUit) {
     /* Zet het rood licht van verkeerslichten aan of uit       
     */    
-    gpio_set_level( ROOD_VERKEERSLICHT_GPIO , invertLevel(aanUit));
+    gpio_set_level( ROOD_VERKEERSLICHT_GPIO , aanUit);
 }
   
 void zetGroeneLichten(int aanUit) {
@@ -45,11 +34,16 @@ void zetRodeOversteeklichten(int aanUit){
 
 void zetGroeneOversteeklichten(int aanUit){
     // Ook het groene oversteeklicht is ook normally open
-    gpio_set_level(GROEN_OVERSTEEKLICHT_GPIO , invertLevel(aanUit));
+    gpio_set_level(GROEN_OVERSTEEKLICHT_GPIO , aanUit);
 } 
 
 bool leesIsGedrukt() {
-    //lees of knop is gedrukt en stelt de waarde van globale variabele gedrukt bij
+    //lees of de knop is gedrukt en stelt de waarde van globale variabele gedrukt bij
+    //lees het level van de poort DRUKKNOPPEN_GPIO
     int levelGedrukt = gpio_get_level(DRUKKNOPPEN_GPIO);
-    return levelGedrukt == AAN; //voor vorlopig altijd gedrukt
+    // gpio is hoog => niet gedrukt, gpio is laag => gedrukt (geinverteerd dus)    
+    #ifdef TEST_GEDRUKT 
+    std::cout << "De waarde van de gedrukt poort is: " << levelGedrukt << "\n";
+    #endif
+    return levelGedrukt == UIT; 
 }

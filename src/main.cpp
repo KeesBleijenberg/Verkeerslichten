@@ -1,6 +1,8 @@
+#include <test.h>
 #include <hardwareVerkeerslichten.h>
 #include <hulpfunc.h>
 #include <setup.h>
+#include <iostream>
 
 #define PAUZE_NA_AFHANDELING_GEDRUKT_SECS 5.0
 #define ORANJE_LICHT_TIJD_SECS 3.0        // de tijd die het oranje verkeerstlicht aan blijft
@@ -57,7 +59,10 @@ extern "C" { //extern "C" => voorkom name mangling door C++
     setup();          // initaliseren poorten en lichten (oversteeklicht op rood en verkeerslicht op groen)
     while (true) {    // the main loop   
       if (leesIsGedrukt()) {
+        #ifdef TEST_GEDRUKT
+        std::cout << "Er is gedrukt" << std::endl;
         handleGedrukt();
+        #endif
       }
     }
   } 
