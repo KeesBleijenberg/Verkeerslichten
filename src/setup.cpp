@@ -1,6 +1,6 @@
 #include <hardwareVerkeerslichten.h>
 #include <setup.h>
-#include <hulpfunc.h>
+#include <hw_hulpfunc.h>
 
 #define SETUP_TIME_MODE_PINS_SECS   0.5  // wachten op zetten mode pins in de setup
 #define SETUP_TIME_ZET_LICHTEN_SECS 0.5  // wachten op zetten lichten in de setup
@@ -13,6 +13,7 @@ void setup(){
     zetPinOutput(ROOD_OVERSTEEKLICHT_GPIO);
     zetPinOutput(GROEN_OVERSTEEKLICHT_GPIO);
     zetPinInput(DRUKKNOPPEN_GPIO);
+    zetPinPullUp(DRUKKNOPPEN_GPIO);
     sleepInSecs(SETUP_TIME_MODE_PINS_SECS); // Wacht even totdat alles de eerste initialisatie klaar is. 
     
     //initialiseer lichten

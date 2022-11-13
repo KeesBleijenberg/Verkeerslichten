@@ -1,11 +1,8 @@
-#ifndef HULPFUNC 
-    #define HULPFUNC
-    void sleepInSecs (const double secs);
-    void sleepInSecs (const double secs);
-    void zetRodeLichten(int aanUit); 
-    void zetGroeneLichten(int aanUit); 
-    void zetOranjeLichten(const int aanUit);
-    void zetRodeOversteeklichten(int aanUit);    
-    void zetGroeneOversteeklichten(int aanUit);
-    bool leesIsGedrukt();  
+using namespace std;
+#include <string>
+
+#ifndef HULPFUNC_H 
+  #define HULPFUNC_H
+  string zetHaakjes (const string s);
+  string boolToNlStr(bool b);
 #endif
