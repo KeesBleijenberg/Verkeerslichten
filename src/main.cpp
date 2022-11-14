@@ -24,16 +24,16 @@
 
 void handleOversteekLichten(){        
   // Er is gedrukt, het verkeerslicht staat op rood. Hier verander ik alleen de oversteeklichten
-  sleepInSecs(OVERSTEEKLICHT_ROOD_TIJD_SEC);
+  sleepSecs(OVERSTEEKLICHT_ROOD_TIJD_SEC);
   zetRodeOversteeklichten(UIT);
   zetGroeneOversteeklichten(AAN);
-  sleepInSecs(OVERSTEEKLICHT_VOLLEDIG_GROEN_TIJD_SEC);
+  sleepSecs(OVERSTEEKLICHT_VOLLEDIG_GROEN_TIJD_SEC);
   //knipperen van het groene oversteeklicht
   for (auto i = 0; i <  OVERSTEEKLICHT_GROEN_KNIPPER_AANTAL; i++) {
     zetGroeneOversteeklichten(UIT);
-    sleepInSecs(OVERSTEEKLICHT_GROEN_KNIPPER_AAN_TIJD_SEC);
+    sleepSecs(OVERSTEEKLICHT_GROEN_KNIPPER_AAN_TIJD_SEC);
     zetGroeneOversteeklichten(AAN);
-    sleepInSecs(OVERSTEEKLICHT_GROEN_KNIPPER_AAN_TIJD_SEC);
+    sleepSecs(OVERSTEEKLICHT_GROEN_KNIPPER_AAN_TIJD_SEC);
   }
   zetGroeneOversteeklichten(UIT);
   zetRodeOversteeklichten(AAN); 
@@ -43,16 +43,16 @@ void handleGedrukt() {
   zetGroeneLichten(UIT);
   zetRodeLichten(UIT);
   zetOranjeLichten(AAN);
-  sleepInSecs(ORANJE_LICHT_TIJD_SECS);
+  sleepSecs(ORANJE_LICHT_TIJD_SECS);
   zetOranjeLichten(UIT);
   zetRodeLichten(AAN);          
   //rood verkeerstlicht is aan. Oranje en groen zijn uit. Zet nu de oversteeklichten
-  sleepInSecs(ROOD_TOT_GROEN_OVERSTEEKLICHT);
+  sleepSecs(ROOD_TOT_GROEN_OVERSTEEKLICHT);
   handleOversteekLichten();
-  sleepInSecs(ROOD_OVERSTEEK_TOT_GROEN_VERKEERSLICHT);
+  sleepSecs(ROOD_OVERSTEEK_TOT_GROEN_VERKEERSLICHT);
   zetRodeLichten(UIT);        
   zetGroeneLichten(AAN);
-  sleepInSecs(NEGEER_INDRUKKEN_TIJD_SECS); //neem een pauze om 'constant ingedrukt houden' te voorkomen        
+  sleepSecs(NEGEER_INDRUKKEN_TIJD_SECS); //neem een pauze om 'constant ingedrukt houden' te voorkomen        
 }
 
 extern "C" {                //extern "C" => voorkom name mangling door C++

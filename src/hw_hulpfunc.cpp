@@ -1,16 +1,9 @@
 #include <test.h>  
 #include <iostream>
 #include <driver/gpio.h>
-#include <freertos/FreeRTOS.h>
-#include <freertos/task.h>
-#include <freertos/queue.h>  
-#include <cmath>
 #include <hardwareVerkeerslichten.h>
   
-void sleepInSecs (const double secs) {
-    //laat de computer secs seconden wachten    
-    vTaskDelay(round ((secs * 1000)/ portTICK_PERIOD_MS));
-}
+
 
 void zetRodeLichten(int aanUit) {
     /* Zet het rood licht van verkeerslichten aan of uit       

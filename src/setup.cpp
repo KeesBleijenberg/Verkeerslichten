@@ -1,4 +1,5 @@
 #include <hardwareVerkeerslichten.h>
+#include <hulpfunc.h>
 #include <setup.h>
 #include <hw_hulpfunc.h>
 
@@ -14,7 +15,7 @@ void setup(){
     zetPinOutput(GROEN_OVERSTEEKLICHT_GPIO);
     zetPinInput(DRUKKNOPPEN_GPIO);
     zetPinPullUp(DRUKKNOPPEN_GPIO);
-    sleepInSecs(SETUP_TIME_MODE_PINS_SECS); // Wacht even totdat alles de eerste initialisatie klaar is. 
+    sleepSecs(SETUP_TIME_MODE_PINS_SECS); // Wacht even totdat alles de eerste initialisatie klaar is. 
     
     //initialiseer lichten
     zetGroeneOversteeklichten(UIT);
@@ -23,5 +24,5 @@ void setup(){
     zetGroeneLichten(AAN);
     zetRodeOversteeklichten(AAN);
     zetGroeneOversteeklichten(UIT);
-    sleepInSecs(SETUP_TIME_ZET_LICHTEN_SECS); // Wacht even totdat alles de initialisatie klaar is. 
+    sleepSecs(SETUP_TIME_ZET_LICHTEN_SECS); // Wacht even totdat alles de initialisatie klaar is. 
 }
