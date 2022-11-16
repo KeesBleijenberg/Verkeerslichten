@@ -63,7 +63,7 @@ extern "C" {                //extern "C" => voorkom name mangling door C++
         //lees alleen maar leesIsGedrukt uit
         bool b = leesIsGedrukt();
         cout << "Gedrukt: " << boolToNlStr(b) << endl << endl;
-        sleepInSecs(1.0);
+        sleepSecs(1.0);
       #else 
       if (leesIsGedrukt()) {        
         handleGedrukt();
