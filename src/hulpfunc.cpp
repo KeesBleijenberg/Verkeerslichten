@@ -1,5 +1,5 @@
 /* 
-Hier staan alle hulpfuncties die je voor elk project kunt gebruiken.
+Hier staan alle hulpfuncties die je voor elk ander project ook zou kunnen gebruiken.
 */
 
 using namespace std;

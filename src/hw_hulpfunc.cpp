@@ -2,8 +2,6 @@
 #include <iostream>
 #include <driver/gpio.h>
 #include <hardwareVerkeerslichten.h>
-  
-
 
 void zetRodeLichten(int aanUit) {
     /* Zet het rood licht van verkeerslichten aan of uit       
@@ -31,8 +29,8 @@ void zetGroeneOversteeklichten(int aanUit){
 } 
 
 bool leesIsGedrukt() {
-    //lees of de knop is gedrukt en stelt de waarde van globale variabele gedrukt bij
-    //lees het level van de poort DRUKKNOPPEN_GPIO
+    //lees of de knop is gedrukt en retun het resultaat
+    //lees daarvoor de binaire waarde van de poort DRUKKNOPPEN_GPIO en inverteer dan het gevonden level
     int poortGedruktLevel = gpio_get_level(DRUKKNOPPEN_GPIO);
     // gpio is hoog => niet gedrukt, gpio is laag => gedrukt (geinverteerd dus)    
     #ifdef TEST_GEDRUKT 
