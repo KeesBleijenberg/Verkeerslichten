@@ -9,7 +9,7 @@
 #define ORANJE_LICHT_TIJD_SECS 3.0                  //De tijd die het oranje verkeerstlicht aan blijft
 #define NEGEER_INDRUKKEN_TIJD_SECS 5.0              //Iemand drukt op een knop -> de hele routine wordt afgehandeld -> de tijd na de afhandeling waarin de drukknoppen genegeerd worden.
 #define ROOD_OVERSTEEK_TOT_GROEN_VERKEERSLICHT 4.0  //Tijd nadat het oversteeklicht rood is geworden totdat het verkeerslicht groen wordt
-#define ROOD_TOT_GROEN_OVERSTEEKLICHT 3.0           //Tijd nadat het verkeerslicht op rood gaat totdat het oversteeklicht groen wordt
+#define ROOD_VERKEERSLICHT_TOT_GROEN_OVERSTEEKLICHT 3.0           //Tijd nadat het verkeerslicht op rood gaat totdat het oversteeklicht groen wordt
 #define OVERSTEEKLICHT_ROOD_TIJD_SEC 0.5            //De tijd die het oversteeklicht nog op rood blijft staan.
 #define OVERSTEEKLICHT_VOLLEDIG_GROEN_TIJD_SEC 10.0 //De tijd die overstekenden krijgen om over te steken voordat het groene licht gaat knipperen.
 #define OVERSTEEKLICHT_GROEN_KNIPPER_AANTAL 5       //Het aantal keren dat het groene oversteeklicht gaat knipperen (een positieve int)
@@ -40,18 +40,18 @@ void handleOversteekLichten(){
 }
 
 void handleGedrukt() {
-  zetGroeneLichten(UIT);
-  zetRodeLichten(UIT);
-  zetOranjeLichten(AAN);
+  zetGroeneVerkeerslichten(UIT);
+  zetRodeVerkeerslichten(UIT);
+  zetOranjeVerkeerslichten(AAN);
   sleepSecs(ORANJE_LICHT_TIJD_SECS);
-  zetOranjeLichten(UIT);
-  zetRodeLichten(AAN);          
+  zetOranjeVerkeerslichten(UIT);
+  zetRodeVerkeerslichten(AAN);          
   //rood verkeerstlicht is aan. Oranje en groen zijn uit. Zet nu de oversteeklichten
-  sleepSecs(ROOD_TOT_GROEN_OVERSTEEKLICHT);
+  sleepSecs(ROOD_VERKEERSLICHT_TOT_GROEN_OVERSTEEKLICHT);
   handleOversteekLichten();
   sleepSecs(ROOD_OVERSTEEK_TOT_GROEN_VERKEERSLICHT);
-  zetRodeLichten(UIT);        
-  zetGroeneLichten(AAN);
+  zetRodeVerkeerslichten(UIT);        
+  zetGroeneVerkeerslichten(AAN);
   sleepSecs(NEGEER_INDRUKKEN_TIJD_SECS); //neem een pauze om 'constant ingedrukt houden' te voorkomen        
 }
 

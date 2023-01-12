@@ -17,11 +17,11 @@ void setup(){
     zetPinPullUp(DRUKKNOPPEN_GPIO);
     sleepSecs(SETUP_TIME_MODE_PINS_SECS); // Wacht even tot de eerste initialisatie klaar is. 
     
-    //initialiseer lichten
+    //initialiseer verkeerslichten en oversteeklichten
     zetGroeneOversteeklichten(UIT);
-    zetRodeLichten(UIT);
-    zetOranjeLichten(UIT);
-    zetGroeneLichten(AAN);
+    zetRodeVerkeerslichten(UIT);
+    zetOranjeVerkeerslichten(UIT);
+    zetGroeneVerkeerslichten(AAN);
     zetRodeOversteeklichten(AAN);
     zetGroeneOversteeklichten(UIT);
     sleepSecs(SETUP_TIME_ZET_LICHTEN_SECS); // Wacht even tot de initialisatie klaar is. 

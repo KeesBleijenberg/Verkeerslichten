@@ -3,18 +3,18 @@
 #include <driver/gpio.h>
 #include <hardwareVerkeerslichten.h>
 
-void zetRodeLichten(int aanUit) {
+void zetRodeVerkeerslichten(int aanUit) {
     /* Zet het rood licht van verkeerslichten aan of uit       
     */    
     gpio_set_level( ROOD_VERKEERSLICHT_GPIO , aanUit);
 }
   
-void zetGroeneLichten(int aanUit) {
+void zetGroeneVerkeerslichten(int aanUit) {
       //zet het groen licht aan of uit
     gpio_set_level(GROEN_VERKEERSLICHT_GPIO, aanUit);    
 }
 
-void zetOranjeLichten(const int aanUit) {
+void zetOranjeVerkeeslichten(const int aanUit) {
       //zet het oranje licht aan of uit
     gpio_set_level(ORANJE_VERKEERSLICHT_GPIO, aanUit);    
 }
