@@ -4,28 +4,33 @@
 #include <hardwareVerkeerslichten.h>
 
 void zetRodeVerkeerslichten(int aanUit) {
-    /* Zet het rood licht van verkeerslichten aan of uit       
-    */    
+    // Zet het rood verkeerslicht aan of uit     
     gpio_set_level( ROOD_VERKEERSLICHT_GPIO , aanUit);
+    wachtenOpLamp(aanUit);
 }
   
 void zetGroeneVerkeerslichten(int aanUit) {
-      //zet het groen licht aan of uit
+      //zet het groene verkeerslicht aan of uit
     gpio_set_level(GROEN_VERKEERSLICHT_GPIO, aanUit);    
+    wachtenOpLamp(aanUit);
 }
 
-void zetOranjeVerkeeslichten(const int aanUit) {
-      //zet het oranje licht aan of uit
+void zetOranjeVerkeerslichten(int aanUit) {
+    //zet het oranje verkeerslicht aan of uit
     gpio_set_level(ORANJE_VERKEERSLICHT_GPIO, aanUit);    
+    wachtenOpLamp(aanUit);
 }
 
 void zetRodeOversteeklichten(int aanUit){
+    //zet het rode oversteeklicht aan of uit
     gpio_set_level(ROOD_OVERSTEEKLICHT_GPIO, aanUit);    
+    wachtenOpLamp(aanUit);    
 } 
 
 void zetGroeneOversteeklichten(int aanUit){
     // Ook het groene oversteeklicht is ook normally open
     gpio_set_level(GROEN_OVERSTEEKLICHT_GPIO , aanUit);
+    wachtenOpLamp(aanUit);
 } 
 
 bool leesIsGedrukt() {

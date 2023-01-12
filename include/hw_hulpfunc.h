@@ -2,7 +2,7 @@
     #define HW_HULPFUNC_H
     void zetRodeVerkeerslichten(int aanUit); 
     void zetGroeneVerkeerslichten(int aanUit); 
-    void zetOranjeVerkeerslichten(const int aanUit);
+    void zetOranjeVerkeerslichten(int aanUit);
     void zetRodeOversteeklichten(int aanUit);    
     void zetGroeneOversteeklichten(int aanUit);
     bool leesIsGedrukt();     

@@ -29,5 +29,15 @@ void checkPortAction(gpio_num_t pin, esp_err_t err, string errMsg) {
     }
 }
 
-
-
+void wachtenOpLamp(int aanUit) {
+    if (aanUit == AAN) {
+        if (OPWARMTIJD_LAMP_AAN > 0.01) {
+            sleepSecs(OPWARMTIJD_LAMP_AAN);
+        }
+    }
+    else {
+        if (AFKOELTIJD_LAMP_UIT > 0.01) {
+            sleepSecs(AFKOELTIJD_LAMP_UIT);
+        }
+    }
+}
