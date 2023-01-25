@@ -10,19 +10,19 @@
 //Tijd die het oranje verkeerstlicht aan blijft
 #define ORANJE_LICHT_TIJD 4.0             
 //Iemand drukt op een knop -> de hele routine wordt afgehandeld -> de tijd na de afhandeling waarin de drukknoppen genegeerd worden.                   
-#define NEGEER_INDRUKKEN_TIJD 5.0                            
+#define NEGEER_INDRUKKEN_TIJD 15.0                            
 //Tijd nadat het oversteeklicht rood is geworden totdat het verkeerslicht groen wordt
 #define ROOD_OVERSTEEK_TOT_GROEN_VERKEERSLICHT_TIJD 5.0       
 //Tijd tussen: het verkeerslicht gaat op rood (eerst op oranje) en het oversteeklicht op groen (was rood)
 #define OVERSTEEKLICHT_ROOD_TIJD 2.0
 //Tijd die overstekenden krijgen om over te steken voordat het groene licht gaat knipperen.
-#define OVERSTEEKLICHT_VOLLEDIG_GROEN_TIJD 15.0               
+#define OVERSTEEKLICHT_VOLLEDIG_GROEN_TIJD 7.0               
 //Het aantal keren dat het groene oversteeklicht gaat knipperen (een positieve integer)
 #define OVERSTEEKLICHT_GROEN_KNIPPER_AANTAL 6                     
 //Tijd tussen: groen oversteeklicht aan en groen oversteeklicht uit.
-#define OVERSTEEKLICHT_GROEN_KNIPPER_TIJD 0.8             
+#define OVERSTEEKLICHT_GROEN_KNIPPER_TIJD 0.3             
 //Tijd tussen: drukknop gedrukt en oranje verkeerslicht gaat aan = reactietijd op drukken
-#define DRUKKEN_EN_ORANJE_VERKEERSLICHT_TIJD 1.5       
+#define DRUKKEN_EN_ORANJE_VERKEERSLICHT_TIJD 5.0       
 
 /********************************************************************************  
 Als iemand drukt wordt de functie handleGedrukt() gestart:
