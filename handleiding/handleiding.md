@@ -180,3 +180,23 @@ Neem als vervangend relais in dit voorbeeld het onderste relais. Dit zou je dan 
   - in de voeding
   - structuur (iedere paar lampen 1 zekering)
   - grootte
+
+
+**Probleem met elektrisch film scherm**
+
+Er bleek een probleem te zijn. Als het elektrisch film scherm (efs) aan gaat, detecteert het verkeerslicht dit alsof iemand op een knop heeft gedrukt. 
+De kabel van de drukknop naar het relais, dat op zijn beurt het bordje aanstuurt, ligt vlakbij de kabel van de efs. Dat zou de oorzaak kunnen zijn van dit probleem. Het signaal van het efs induceert een voltage waardoor het drukknoprelais 'aan' gaat. 
+Dit is de versimpelde schakeling van het relais.
+![Schematische weergave drukknop](schema_schakelaar.jpg)
+De drukknop A stuurt het drukknoprelais B aan. Dit relais op zijn beurt schakelt poort 22 van de esp32 op het bordje aan, wat door het bordje geïnterpreteerd wordt als: er is gedrukt.
+De lange(?) kabel die door X loopt kan last hebben van storingen van kabels van het efs.
+Toch lijkt het me niet waarschijnlijk dat storing op draad X de oorzaak is van dit probleem. Er kan weliswaar door de efs storingen stroom opgewekt worden in draad X, maar zou deze stroom sterk genoeg zijn om het drukknoprelais aan te laten gaan?
+
+Om dat te testen zouden we de draad X los kunnen maken en dan de efs aan kunnen zetten. Hoor je dan het drukknoprelais schakelen?
+Een andere test is om draad Y los te maken en om dan de efs aan te zetten. Hoor je dan het drukknop relais schakelen?
+Je kunt ook X en Y los maken en dan de efs starten. Hoor je dan het drukknoprelais schakelen?
+In alle gevallen gaat het om het drukknoprelais en niet om een ander schakelend relais!
+
+Als X en Y los zijn en het drukknoprelais schakelt als het efs aan is, dan moeten we waarschijnlijk een condensator over de drukknop zetten. 
+
+Als X en Y los zijn en het drukknoprelais schakelt niet en toch denkt het bordje dat er 'gedrukt' is, dan hebben we vermoedelijk een storing via een eletrisch veld van uit de efs en niet een storing indirect via de kabel op het drukknoprelais. Dat moeten we dan verder gaan onderzoeken. 

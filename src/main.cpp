@@ -22,7 +22,7 @@
 //Tijd tussen: groen oversteeklicht aan en groen oversteeklicht uit.
 #define OVERSTEEKLICHT_GROEN_KNIPPER_TIJD 0.3             
 //Tijd tussen: drukknop gedrukt en oranje verkeerslicht gaat aan = reactietijd op drukken
-#define DRUKKEN_EN_ORANJE_VERKEERSLICHT_TIJD 5.0       
+#define DRUKKEN_TOT_ORANJE_VERKEERSLICHT_TIJD 5.0       
 
 /********************************************************************************  
 Als iemand drukt wordt de functie handleGedrukt() gestart:
@@ -30,13 +30,14 @@ Als iemand drukt wordt de functie handleGedrukt() gestart:
 2. Overteeklichten eerst rood, rood uit, groen aan, groen knipperen en dan rood weer aan
 3. Verkeerslichten weer groen.
 
-De functie handleGedrukt() is klaar als het groene verkeerslicht weer aan gaat. 
-Maar je wilt misschien niet dat kinderen steeds weer direct het verkeer willen stoppen door weer te drukken of door de knop steeds ingedrukt te houden.
+De functie handleGedrukt() is klaar als het verkeerslicht weer groen is. 
+
+Je wilt misschien niet dat kinderen steeds weer direct het verkeer kunnen stoppen door weer te drukken of door de knop steeds ingedrukt te houden.
 Daarom is er een pauze van NEGEER_INDRUKKEN_TIJD_SECS seconden, waarin het programma niet reageert op het opnieuw indrukken van de knop. 
 ********************************************************************************/
 
 void handleOversteekLichten(){        
-  // Er is gedrukt, het verkeerslicht staat op rood. Hier verander ik alleen de oversteeklichten 
+  // Er is gedrukt, het verkeerslicht staat op rood. In deze functie veranderen alleen de oversteeklichten.
   // Wordt alleen aangeroepen door handleGedrukt.
   sleepSecs(OVERSTEEKLICHT_ROOD_TIJD); //het verkeerslichten en oversteeklichten staan op rood. Laat de oversteeklichten nog een tijdje op rood staan.
   zetRodeOversteeklichten(UIT);
@@ -54,7 +55,7 @@ void handleOversteekLichten(){
 }
 
 void handleGedrukt() {
-  sleepSecs(DRUKKEN_EN_ORANJE_VERKEERSLICHT_TIJD); // na indrukken niet direct reageren, maar eerst even wachten
+  sleepSecs(DRUKKEN_TOT_ORANJE_VERKEERSLICHT_TIJD); // na indrukken niet direct reageren, maar eerst even wachten
   zetGroeneVerkeerslichten(UIT);
   zetRodeVerkeerslichten(UIT);
   zetOranjeVerkeerslichten(AAN);
