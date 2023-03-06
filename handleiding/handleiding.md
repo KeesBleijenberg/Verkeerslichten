@@ -184,6 +184,8 @@ Neem als vervangend relais in dit voorbeeld het onderste relais. Dit zou je dan 
 
 **Probleem met elektrisch film scherm**
 
+*Oplossing 1*
+
 Er bleek een probleem te zijn. Als het elektrisch film scherm (efs) aan gaat, detecteert het verkeerslicht dit alsof iemand op een knop heeft gedrukt. 
 De kabel van de drukknop naar het relais, dat op zijn beurt het bordje aanstuurt, ligt vlakbij de kabel van de efs. Dat zou de oorzaak kunnen zijn van dit probleem. Het signaal van het efs induceert een voltage waardoor het drukknoprelais 'aan' gaat. 
 Dit is de versimpelde schakeling van het relais.
@@ -200,3 +202,22 @@ In alle gevallen gaat het om het drukknoprelais en niet om een ander schakelend 
 Als X en Y los zijn en het drukknoprelais schakelt als het efs aan is, dan moeten we waarschijnlijk een condensator over de drukknop zetten. 
 
 Als X en Y los zijn en het drukknoprelais schakelt niet en toch denkt het bordje dat er 'gedrukt' is, dan hebben we vermoedelijk een storing via een eletrisch veld van uit de efs en niet een storing indirect via de kabel op het drukknoprelais. Dat moeten we dan verder gaan onderzoeken. 
+
+*Oplossing 2*
+
+Het basisidee is dat de storingen een vrij hoge frequentie zullen hebben. Hoogstwaarschijnlijk zal daarom het hardwaresignaal voor 'er is gedrukt' binnen 0.1 seconde een paar keer op en neer gaan. Misschien dat daarom het debouncen kan helpen. Met een paar #define's kun je dit mogelijk maken. Kijk daarvoor in hw_hulpfunc.h:
+Als het bordje aangeeft dat er gedrukt is, zou de melding 'er is gedrukt' ook kunnen komen van storingen van andere apparaten of storingen via andere kabels....
+
+Meestal zijn die storingen hoog frequent. Je kunt ze dan softwarematig ondervangen door snel na elkaar een paar keer te testen of de hardware aangeeft of er gedrukt is. 
+Bijvoorbeeld: de functie leesIsGedrukt retourneert alleen true als de hardware 5 keer na elkaar heeft aangegeven dat er gedrukt is.     
+Als de hardware 3 keer na elkaar aangeeft dat er gedrukt is en de vierde keer niet, dan retourneert de functie leesIsGedrukt() false.
+GEDRUKT_DEBOUNCE_COUNT geeft het extra aantal keren dat de hardware moet aangeven dat er gedrukt is, voordat de functie leesgedrukt() TRUE terug geeft.     
+GEDRUKT_DEBOUNCE_COUNT = 0 betekent dat er geen debouce controle gebruikt wordt. Hij leest de hardware en retourneert het resultaat. 
+GEDRUKT_DEBOUNCE_COUNT mag niet te groot worden omdat je de knop dan heel lang vast moet houden voor er iets gebeurt. Even op de knop duwen wordt dan niet meer herkend als 'er is gedrukt'.
+iteraard moet GEDRUKT_DEBOUNCE_COUNT >= 0 zijn. 
+
+#define GEDRUKT_DEBOUNCE_COUNT 0
+#define GEDRUKT_DEBOUNCE_WACHTTIJD_SEC 0.1
+
+GEDRUKT_DEBOUNCE_WACHTTIJD_SEC is de tijd tussen twee tijdstippen waarop de hardware probeert te bepalen of er gedrukt is. 
+Deze tijd moet klein zijn. Anders moet je de knop heel lang vast houden voordat er iets gebeurt.

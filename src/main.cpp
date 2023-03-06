@@ -22,7 +22,7 @@
 //Tijd tussen: groen oversteeklicht aan en groen oversteeklicht uit.
 #define OVERSTEEKLICHT_GROEN_KNIPPER_TIJD 0.3             
 //Tijd tussen: drukknop gedrukt en oranje verkeerslicht gaat aan = reactietijd op drukken
-#define DRUKKEN_TOT_ORANJE_VERKEERSLICHT_TIJD 5.0       
+#define DRUKKEN_TOT_ORANJE_VERKEERSLICHT_TIJD 5.0     
 
 /********************************************************************************  
 Als iemand drukt wordt de functie handleGedrukt() gestart:
